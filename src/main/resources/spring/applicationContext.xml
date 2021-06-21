@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="service"/>
+    <context:component-scan base-package="dao"/>
+    <!-- 加载配置文件 -->
+    <context:property-placeholder location="classpath:db.properties" />
+
+<!--   注入加密bean-->
+    <bean name="BCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
+    <!-- 数据库连接池 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <property name="maxIdle" value="5" />
+    </bean>
+
+    <!--    配置Mybatis工厂，同时指定数据源，并与Mybatis完美整合-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!--        configLocation的属性值为MyBatis的核心配置文件-->
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <!--注册Mapper.xm映射器-->
+        <property name="mapperLocations" value="classpath:dao/*.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--    mybatis-spring组件的扫描器，-->
+        <property name="basePackage" value="dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!--注册Mapper.xm映射器-->
+    </bean>
+
+</beans>
