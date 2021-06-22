@@ -3,8 +3,8 @@
 <mapper namespace="dao.BookDao">
 <!--    保存书籍-->
     <insert id="save">
-        insert into `b_book`(bname, price, author, isbn, publisher, intro, cover)
-        value (#{name}, #{price}, #{author}, #{isbn}, #{publisher}, #{intro}, #{cover})
+        insert into `b_book`(`name`, price, author, isbn, `type`, publisher, intro, cover)
+        value (#{name}, #{price}, #{author}, #{isbn}, #{type}, #{publisher}, #{intro}, #{cover})
     </insert>
 
 <!--    删除书籍-->
@@ -20,6 +20,12 @@
 <!--    查询所有书籍-->
     <select id="findAll" resultType="pojo.Book">
         select * from `b_book`
+    </select>
+    <select id="listType" resultType="java.lang.String">
+        select type from `b_book`
+    </select>
+    <select id="listBookByType" resultType="pojo.Book">
+        select * from `b_book` where `type` = type
     </select>
 
 

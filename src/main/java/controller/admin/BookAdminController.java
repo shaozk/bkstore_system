@@ -12,20 +12,23 @@ import org.springframework.web.servlet.ModelAndView;
 import pojo.Book;
 import response.ResponseResult;
 import service.BookService;
-import service.TestService;
 
-import javax.jws.WebParam;
 import java.util.List;
 
 /**
  * @author shaozk
  */
 @Controller
-@RequestMapping("/admin")
-public class BookController {
+@RequestMapping("/admin/book")
+public class BookAdminController {
 
     @Autowired
     private BookService bookService;
+
+    @RequestMapping("/search")
+    public String search(String keyword) {
+        return "hello";
+    }
 
     @RequestMapping("/addBook")
     public ModelAndView addBook(Book book) {
@@ -50,9 +53,18 @@ public class BookController {
     @RequestMapping("/listBooks")
     public ModelAndView listBooks() {
         ModelAndView modelAndView = new ModelAndView();
-        ResponseResult responseResult = bookService.listBooks();
-        modelAndView.addObject("responseResult", responseResult);
+        List<Book> bookList = bookService.listBooks();
+        modelAndView.addObject("bookList", bookList);
         modelAndView.setViewName("admin/listBooks");
+        return modelAndView;
+    }
+
+    @RequestMapping("/listByType")
+    public ModelAndView listBooksByType(String type) {
+        ModelAndView modelAndView = new ModelAndView();
+        List<Book> bookList = bookService.listBookByType(type);
+        modelAndView.addObject("bookList", bookList);
+        modelAndView.setViewName("admin/adminIndex");
         return modelAndView;
     }
 

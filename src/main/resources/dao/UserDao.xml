@@ -7,8 +7,8 @@
 
     <!--保存-->
     <insert id="save" parameterType="pojo.User">
-        insert into `b_user`(uname, upassword, avatar, roles, email, state, create_time, update_time)
-            value (#{uname}, #{password}, #{avatar}, #{roles},#{email}, #{state}, #{createTime}, #{updateTime})
+        insert into `b_user`(`id`, `name`, `password`, `avatar`, `roles`, `email`, `state`, `create_time`, `update_time`)
+            value (#{id}, #{name}, #{password}, #{avatar}, #{roles},#{email}, #{state}, #{createTime}, #{updateTime})
     </insert>
 
     <!--删除-->
@@ -33,7 +33,7 @@
 
 <!--    通过名字找用户-->
     <select id="findOneByName" resultType="pojo.User">
-        select * from `b_user` where `uname` = #{uname}
+        select * from `b_user` where `name` = #{name}
     </select>
 
 <!--通过更新状态删除用户-->

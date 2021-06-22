@@ -49,9 +49,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public ResponseResult listBooks() {
-        List<Book> bookList = bookDao.findAll();
-        return ResponseResult.SUCCESS("查询成功").setData(bookList);
+    public List<Book> listBooks() {
+        return bookDao.findAll();
     }
 
     @Override
@@ -63,5 +62,15 @@ public class BookServiceImpl implements BookService {
     @Override
     public ResponseResult updateBook(String categoryId, Book book) {
         return null;
+    }
+
+    @Override
+    public List<String> listBookTypes() {
+        return bookDao.listType();
+    }
+
+    @Override
+    public List<Book> listBookByType(String type) {
+        return bookDao.listBookByType(type);
     }
 }

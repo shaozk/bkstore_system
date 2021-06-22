@@ -20,7 +20,7 @@ import java.util.Date;
 @ToString
 public class User {
     private String id;
-    private String uname;
+    private String name;
     private String password;
     private String avatar;
     private String roles;

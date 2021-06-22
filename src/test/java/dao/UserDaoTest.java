@@ -22,7 +22,7 @@ public class UserDaoTest {
         User user = new User();
         user.setId("2");
         user.setRoles("user");
-        user.setUname("shaozk");
+        user.setName("shaozk");
         user.setEmail("12345@qq.com");
         user.setPassword("123456");
         user.setState("1");

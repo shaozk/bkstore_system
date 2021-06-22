@@ -22,4 +22,15 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
+    <!--    配置拦截器-->
+<!--    <mvc:interceptors>-->
+<!--        <mvc:interceptor>-->
+<!--            &lt;!&ndash;            拦截所有的访问&ndash;&gt;-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            &lt;!&ndash; 在登录界面不拦截 &ndash;&gt;-->
+<!--            <mvc:exclude-mapping path="/user/login" />-->
+<!--            <bean class="interceptor.LoginInterceptor"/>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
+
 </beans>

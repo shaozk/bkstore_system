@@ -8,6 +8,8 @@ package service;
 import pojo.Book;
 import response.ResponseResult;
 
+import java.util.List;
+
 /**
  * @author shaozk
  */
@@ -28,11 +30,9 @@ public interface BookService {
 
     /**
      * 列出全部书籍
-     * @param page
-     * @param size
      * @return
      */
-    ResponseResult listBooks();
+    List<Book> listBooks();
 
     /**
      * 通过id删除书籍
@@ -48,4 +48,17 @@ public interface BookService {
      * @return
      */
     ResponseResult updateBook(String categoryId, Book book);
+
+    /**
+     * 列出书籍类别
+     * @return
+     */
+    List<String> listBookTypes();
+
+    /**
+     * 按照类型找书籍
+     * @return
+     * @param type
+     */
+    List<Book> listBookByType(String type);
 }

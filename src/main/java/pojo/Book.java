@@ -11,6 +11,7 @@ public class Book {
     private String name;
     private float price;
     private String author;
+    private String type;
     private String isbn;
     private String publisher;
     private String intro;
