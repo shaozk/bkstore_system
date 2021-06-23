@@ -9,15 +9,6 @@
 
         }
 
-        // 修改书籍
-        function updateBook() {
-
-        }
-
-        // 批量删除
-        function deleteBooks() {
-
-        }
 
         // 搜索时检查
         function searchIsNull(){
@@ -59,8 +50,8 @@
 </form>
 
 <%--批量删除--%>
-<input type="button" value="删除" onclick="deleteBooks()">
-<input type="button" value="修改" onclick="updateBook()">
+<input type="submit" value="删除"/>
+<input type="submit" value="修改"/>
 
 <table border="1">
     <tr>

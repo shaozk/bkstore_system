@@ -60,7 +60,7 @@
 </head>
 <body>
 ****添加书籍****
-<form action="${pageContext.request.contextPath }/admin/book/addBook" method="post" name="addForm">
+<form action="${pageContext.request.contextPath }/admin/book/addBook" method="post" name="addForm" enctype="multipart/form-data">
     <table border="1">
         <tr>
             <td>书名</td>

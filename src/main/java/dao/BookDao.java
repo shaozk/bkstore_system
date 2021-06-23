@@ -29,4 +29,11 @@ public interface BookDao {
      * @param type
      */
     List<Book> listBookByType(String type);
+
+    /**
+     * 更新
+     * @param book
+     * @return
+     */
+    int update(Book book);
 }

@@ -6,8 +6,8 @@
 
 </head>
 <body>
-<%@include file="bookManage.jsp" %>
-<%@include file="userManage.jsp" %>
+<%@include file="book/bookManage.jsp" %>
+<%@include file="user/userManage.jsp" %>
 <%@include file="orderManage.jsp" %>
 
 </body>

@@ -3,7 +3,9 @@ package pojo;
 import lombok.Data;
 import lombok.ToString;
 
-
+/**
+ * @author shaozk
+ */
 @Data
 @ToString
 public class Book {

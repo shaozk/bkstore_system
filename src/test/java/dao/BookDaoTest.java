@@ -23,7 +23,6 @@ public class BookDaoTest {
         book.setName("图灵机");
         book.setAuthor("turing");
         book.setPrice(66);
-        book.setCover("无");
         book.setIntro("有人在等伞，而我在等于停");
         book.setIsbn("913667678");
         book.setPublisher("电子工业");

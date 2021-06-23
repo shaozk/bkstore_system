@@ -5,6 +5,8 @@ package utils;
  */
 public interface Constants {
 
+    String BOOK_COVER = "default.png";
+
 
     interface User {
         String ROLE_ADMIN = "role_admin";

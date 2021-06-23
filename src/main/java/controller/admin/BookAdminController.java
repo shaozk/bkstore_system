@@ -7,6 +7,8 @@ package controller.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pojo.Book;
@@ -32,21 +34,27 @@ public class BookAdminController {
 
     @RequestMapping("/addBook")
     public ModelAndView addBook(Book book) {
-        System.out.println(book.toString());
         ModelAndView modelAndView = new ModelAndView();
-        ResponseResult responseResult = bookService.addBook(book);
-        modelAndView.addObject("responseResult", responseResult);
-        modelAndView.setViewName("admin/addBook");
+//        int responseResult = bookService.addBook(book);
+//        modelAndView.addObject("responseResult", responseResult);
+        modelAndView.setViewName("admin/book/addBook");
         return modelAndView;
+    }
+
+    @RequestMapping("/updateBook")
+    public String updateBook(@ModelAttribute Book book, Model model) {
+        List<Book> list = bookService.listBooks();
+        model.addAttribute("list", list);
+        return "admin/book/updateBook";
     }
 
 
     @RequestMapping("/getBook")
     public ModelAndView getBook(String bookId) {
         ModelAndView modelAndView = new ModelAndView();
-        ResponseResult responseResult = bookService.getBook(bookId);
+       Book responseResult = bookService.getBook(bookId);
         modelAndView.addObject("responseResult", responseResult);
-        modelAndView.setViewName("admin/getBook");
+        modelAndView.setViewName("admin/book/getBook");
         return modelAndView;
     }
 
@@ -55,7 +63,7 @@ public class BookAdminController {
         ModelAndView modelAndView = new ModelAndView();
         List<Book> bookList = bookService.listBooks();
         modelAndView.addObject("bookList", bookList);
-        modelAndView.setViewName("admin/listBooks");
+        modelAndView.setViewName("admin/book/listBooks");
         return modelAndView;
     }
 
@@ -73,7 +81,7 @@ public class BookAdminController {
         ModelAndView modelAndView = new ModelAndView();
         ResponseResult responseResult = bookService.deleteBook(id);
         modelAndView.addObject("responseeResult",responseResult);
-        modelAndView.setViewName("admin/deleteBook");
+        modelAndView.setViewName("admin/book/deleteBook");
         return modelAndView;
     }
 

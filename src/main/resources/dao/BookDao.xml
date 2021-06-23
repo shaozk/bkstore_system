@@ -6,8 +6,12 @@
         insert into `b_book`(`name`, price, author, isbn, `type`, publisher, intro, cover)
         value (#{name}, #{price}, #{author}, #{isbn}, #{type}, #{publisher}, #{intro}, #{cover})
     </insert>
+    <update id="update">
+        update `b_book` set `name` = #{name}, `price` = #{price}, `author` = #{author}, `isbn` = #{isbn}, `publisher` = #{publisher},
+                            `intro` = #{intro}, `cover` = #{cover} where `id` = #{id}
+    </update>
 
-<!--    删除书籍-->
+    <!--    删除书籍-->
     <delete id="deleteAllById">
         delete from `b_book` where id = #{bookId}
     </delete>
@@ -22,7 +26,7 @@
         select * from `b_book`
     </select>
     <select id="listType" resultType="java.lang.String">
-        select type from `b_book`
+        select distinct  type from `b_book`
     </select>
     <select id="listBookByType" resultType="pojo.Book">
         select * from `b_book` where `type` = type

@@ -5,9 +5,14 @@
 
 package service;
 
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.multipart.MultipartFile;
 import pojo.Book;
 import response.ResponseResult;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -19,14 +24,14 @@ public interface BookService {
      * @param book
      * @return
      */
-    ResponseResult addBook(Book book);
+    int addBook(Book book, MultipartFile file, ModelMap map, HttpServletRequest request) throws IOException;
 
     /**
      * 通过id获取书籍
      * @param bookId
      * @return
      */
-    ResponseResult getBook(String bookId);
+    Book getBook(String bookId);
 
     /**
      * 列出全部书籍
@@ -43,11 +48,10 @@ public interface BookService {
 
     /**
      * 更新书籍信息
-     * @param categoryId
      * @param book
      * @return
      */
-    ResponseResult updateBook(String categoryId, Book book);
+    int updateBook(Model model, Book book, MultipartFile file, HttpServletRequest request) throws IOException;
 
     /**
      * 列出书籍类别
@@ -61,4 +65,5 @@ public interface BookService {
      * @param type
      */
     List<Book> listBookByType(String type);
+
 }
