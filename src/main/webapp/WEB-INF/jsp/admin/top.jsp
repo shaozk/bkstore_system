@@ -9,26 +9,14 @@
 <html>
 <head>
     <title>top</title>
-    <style>
-        ul{
-            /*无黑圆点*/
-            list-style-type:none;
-            padding: 0;
-            margin: 0;
-            overflow: hidden;
-        }
-        li{
-            /*横向排列*/
-            float:left;
-        }
-    </style>
 </head>
 <body>
 
-<a style="float:right" href="${pageContext.request.contextPath}/user/login">登录</a>
-<a style="float:right" href="${pageContext.request.contextPath}/user/register">注册</a><br/>
+<a style="float:right" href="${pageContext.request.contextPath}/user/login" target="frameContentRight">登录</a>
+<a style="float:right" href="${pageContext.request.contextPath}/user/register" target="frameContentRight">注册</a><br/>
 
 ****网上书店管理系统****<br/>
+
 
 <ul>
     <li><a href="${pageContext.request.contextPath}/index" >首页</a></li>

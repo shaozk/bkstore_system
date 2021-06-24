@@ -28,8 +28,19 @@
     <select id="listType" resultType="java.lang.String">
         select distinct  type from `b_book`
     </select>
-    <select id="listBookByType" resultType="pojo.Book">
-        select * from `b_book` where `type` = type
+    <select id="listBookByType" parameterType="String" resultType="pojo.Book">
+        select * from `b_book`
+        where
+        1 = 1
+        <if test="#{0} != null or #{0} != ''">
+            and `name` like CONCAT('%',#{type},'%')
+            or `type` like CONCAT('%',#{type},'%')
+            or `publisher` like CONCAT('%',#{type},'%')
+            or `author` like CONCAT('%',#{type},'%')
+        </if>
+
+
+
     </select>
 
 

@@ -42,4 +42,32 @@
         <property name="maxInMemorySize" value="40960"/>
     </bean>
 
+    <!-- 国际化操作拦截器 如果采用基于（Session/Cookie）则必需配置 -->
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
+    </mvc:interceptors>
+
+    <!-- 根据session进行国际化 -->
+    <bean id="localeResolver"
+          class="org.springframework.web.servlet.i18n.SessionLocaleResolver" >
+        <property name="defaultLocale" value="zh_CN"/>
+    </bean>
+    <!-- 加载国际化资源文件 -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="classpath:message" />
+    </bean>
+
+    <!-- 注册校验器 -->
+    <bean id="validator"
+          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <!-- hibernate校验器-->
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+        <!-- 指定校验使用的资源文件，在文件中配置校验错误信息，如果不指定则默认使用classpath下的ValidationMessages.properties -->
+        <property name="validationMessageSource" ref="messageSource" />
+    </bean>
+
+    <!-- 开启spring的Valid功能 -->
+<!--    <mvc:annotation-driven conversion-service="conversionService" validator="validator"/>-->
+
+
 </beans>

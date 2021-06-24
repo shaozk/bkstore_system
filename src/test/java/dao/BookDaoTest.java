@@ -33,7 +33,6 @@ public class BookDaoTest {
     @Test
     public void findOneById() {
         Book book = bookDao.findOneById("1");
-        assert book.getId() == 1;
         System.out.println(book.toString());
     }
 

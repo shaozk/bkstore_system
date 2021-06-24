@@ -25,7 +25,8 @@ public class IndexController {
 
         model.addAttribute("bookList", bookList);
         model.addAttribute("bookType", bookType);
+        model.addAttribute("book", new Book());
 
-        return "admin/adminIndex";
+        return "portal/book/listBooks";
     }
 }
