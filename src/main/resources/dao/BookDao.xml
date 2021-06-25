@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.BookDao">
+
+    <!--通过<resultMap>映射实体类属性名和表的字段名对应关系 -->
+    <resultMap type="pojo.Book" id="bookMap">
+        <!-- 用id属性来映射主键字段 -->
+        <id property="id" column="id"/>
+        <!-- 用result属性来映射非主键字段 -->
+        <result property="name" column="name"/>
+        <result property="author" column="author"/>
+        <result property="price" column="price"/>
+        <result property="type" column="type"/>
+        <result property="publisher" column="publisher"/>
+        <result property="intro" column="intro"/>
+        <result property="cover" column="cover"/>
+    </resultMap>
+
 <!--    保存书籍-->
     <insert id="save">
         insert into `b_book`(`name`, price, author, isbn, `type`, publisher, intro, cover)
@@ -17,18 +32,18 @@
     </delete>
 
 <!--    查寻书籍-->
-    <select id="findOneById" resultType="pojo.Book">
+    <select id="findOneById" resultMap="bookMap">
         select * from `b_book` where id = #{bookId}
     </select>
 
 <!--    查询所有书籍-->
-    <select id="findAll" resultType="pojo.Book">
+    <select id="findAll" resultMap="bookMap">
         select * from `b_book`
     </select>
     <select id="listType" resultType="java.lang.String">
         select distinct  type from `b_book`
     </select>
-    <select id="listBookByType" parameterType="String" resultType="pojo.Book">
+    <select id="listBookByType" parameterType="String" resultMap="bookMap">
         select * from `b_book`
         where
         1 = 1

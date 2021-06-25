@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import response.ResponseResult;
 import service.TestService;
 
 /**
@@ -23,7 +22,7 @@ public class TestController {
 
     @RequestMapping("/hello")
     @ResponseBody
-    public ResponseResult hello() {
+    public String hello() {
         return testService.test();
     }
 
@@ -43,7 +42,7 @@ public class TestController {
     @RequestMapping(value = "/testHello", method = RequestMethod.POST)
     public ModelAndView testHello() {
         ModelAndView modelAndView = new ModelAndView();
-        ResponseResult responseResult = testService.test();
+        String responseResult = testService.test();
         modelAndView.addObject("responseResult", responseResult);
         modelAndView.setViewName("test");
         return modelAndView;

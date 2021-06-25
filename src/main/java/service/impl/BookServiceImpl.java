@@ -8,11 +8,11 @@ package service.impl;
 import dao.BookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import pojo.Book;
-import response.ResponseResult;
 import service.BookService;
 import utils.Constants;
 
@@ -22,16 +22,15 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
-
 /**
  * @author shaozk
  */
 @Service
+@Transactional(rollbackFor = {Exception.class})
 public class BookServiceImpl implements BookService {
 
     @Autowired
     private BookDao bookDao;
-
 
     @Override
     public int addBook(Book book, MultipartFile file, Model model, HttpServletRequest request) throws IOException {
@@ -61,10 +60,10 @@ public class BookServiceImpl implements BookService {
         return bookDao.findAll();
     }
 
+
     @Override
-    public ResponseResult deleteBook(String bookId) {
-        int a = bookDao.deleteAllById(bookId);
-        return ResponseResult.SUCCESS("删除成功").setData(a);
+    public int deleteBook(String bookId) {
+        return bookDao.deleteAllById(bookId);
     }
 
     @Override

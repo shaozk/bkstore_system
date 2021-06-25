@@ -1,5 +1,6 @@
 package controller.portal;
 
+import controller.BaseController;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("portal/book")
-public class BookPortalController {
+public class BookPortalController extends BaseController {
 
     @Autowired
     private BookService bookService;
@@ -35,17 +36,12 @@ public class BookPortalController {
         return bookService.listBookByType(type, model);
     }
 
-    @RequestMapping("/getBookDetail")
-    public String bookDetail() {
-        return "hello";
-    }
-
     @RequestMapping("/listBooks")
     public String listBooks(Model model) {
         List<Book> bookList = bookService.listBooks();
         model.addAttribute("bookList", bookList);
-        return "/portal/book/listBooks";
 
+        return "/portal/book/listBooks";
     }
 
     @RequestMapping("/toAddBook")
@@ -70,8 +66,6 @@ public class BookPortalController {
         }
 
     }
-
-
 
     @RequestMapping("/showCover/{cover}")
     public void showCover(@PathVariable("cover") String cover, HttpServletRequest request, HttpServletResponse response) {

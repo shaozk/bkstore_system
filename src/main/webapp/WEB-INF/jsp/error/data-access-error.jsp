@@ -1,9 +1,13 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>footer</title>
+    <title>data-access-error</title>
 </head>
 <body>
-    @author shaozk<br/>
+数据访问异常：<br/>
+异常信息：<br/>
+${ex}
+
 </body>
 </html>

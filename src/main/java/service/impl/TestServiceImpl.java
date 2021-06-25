@@ -5,12 +5,9 @@
 
 package service.impl;
 
-import dao.BookDao;
 import dao.TestDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pojo.Book;
-import response.ResponseResult;
 import service.TestService;
 
 /**
@@ -23,7 +20,7 @@ public class TestServiceImpl implements TestService {
    private TestDao testDao;
 
     @Override
-    public ResponseResult test() {
+    public String test() {
         return testDao.test();
     }
 }

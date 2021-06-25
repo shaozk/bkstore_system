@@ -1,10 +1,12 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>registerSuccess</title>
+    <title>sql-error</title>
 </head>
 <body>
-注册成功 <a href="${pageContext.request.contextPath}/index">返回</a>
-
+数据库异常：<br/>
+异常信息：<br/>
+    ${ex}
 </body>
 </html>

@@ -23,15 +23,13 @@
     </bean>
 
     <!--    配置拦截器-->
-<!--    <mvc:interceptors>-->
-<!--        <mvc:interceptor>-->
-<!--            &lt;!&ndash;            拦截所有的访问&ndash;&gt;-->
-<!--            <mvc:mapping path="/**"/>-->
-<!--            &lt;!&ndash; 在登录界面不拦截 &ndash;&gt;-->
-<!--            <mvc:exclude-mapping path="/user/login" />-->
-<!--            <bean class="interceptor.LoginInterceptor"/>-->
-<!--        </mvc:interceptor>-->
-<!--    </mvc:interceptors>-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 拦截文件访问-->
+            <mvc:mapping path="/portal/book/addBook"/>
+            <bean class="interceptor.FileInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <!--文件上传配置-->
     <bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -66,8 +64,15 @@
         <property name="validationMessageSource" ref="messageSource" />
     </bean>
 
-    <!-- 开启spring的Valid功能 -->
-<!--    <mvc:annotation-driven conversion-service="conversionService" validator="validator"/>-->
+    <!-- 注册类型转换器BookConverter-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="convert.BookConvert"/>
+            </set>
+        </property>
+    </bean>
 
+    <mvc:annotation-driven conversion-service="conversionService"/>
 
 </beans>

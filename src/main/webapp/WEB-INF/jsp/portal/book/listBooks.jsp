@@ -19,12 +19,6 @@
             document.searchForm.submit();
             return true;
         }
-
-        // 删除确认
-        function deleteConfirm() {
-
-        }
-
     </script>
 </head>
 <body>
@@ -102,8 +96,12 @@
                         <td>${book.publisher}</td>
                             <%--                        <td>${book.intro}</td>--%>
                         <td>
-                            <a class="btn btn-warning btn-sm" href="${pageContext.request.contextPath}/portal/book/toUpdateBook?id=${book.id}"><spring:message code="setting.update"/></a>
-                            <a class="btn btn-danger btn-sm" href="${pageContext.request.contextPath}/portal/book/deleteBook/${book.id}" onclick="confirm()"><spring:message code="setting.delete"/></a>
+                            <a class="btn btn-warning btn-sm" href="${pageContext.request.contextPath}/portal/book/toUpdateBook?id=${book.id}">
+                                <spring:message code="setting.update"/>
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="${pageContext.request.contextPath}/portal/book/deleteBook/${book.id}" onclick="confirm()">
+                                <spring:message code="setting.delete"/>
+                            </a>
                         </td>
                     </tr>
                 </c:forEach>

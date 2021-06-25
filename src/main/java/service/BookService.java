@@ -8,7 +8,6 @@ package service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import pojo.Book;
-import response.ResponseResult;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -43,7 +42,7 @@ public interface BookService {
      * @param bookId
      * @return
      */
-    ResponseResult deleteBook(String bookId);
+    int deleteBook(String bookId);
 
     /**
      * 更新书籍信息

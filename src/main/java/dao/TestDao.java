@@ -5,11 +5,9 @@
 
 package dao;
 
-import response.ResponseResult;
-
 /**
  * @author shaozk
  */
 public interface TestDao {
-    ResponseResult test();
+    String test();
 }

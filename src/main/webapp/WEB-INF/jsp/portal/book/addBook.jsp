@@ -6,58 +6,6 @@
     <title>addBook</title>
     <!-- 引入 Bootstrap -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script>
-
-        function confirmFunc() {
-        }
-
-        function allIsNull() {
-                const name = document.addForm.name.value;
-                const author = document.addForm.author.value;
-                const price = document.addForm.price.value;
-                const type = document.addForm.type.value;
-                const isbn = document.addForm.isbn.value;
-                const publisher = document.addForm.publisher.value;
-                const intro = document.addForm.intro.value;
-                if( name === ""){
-                    alert("<spring:message code="book.alert.name"/>");
-                    document.addForm.name.focus();
-                    return false;
-                }
-                if( author === ""){
-                    alert("<spring:message code="book.alert.author"/>");
-                    document.addForm.author.focus();
-                    return false;
-                }
-                if( price === ""){
-                    alert("<spring:message code="book.alert.price"/>");
-                    document.addForm.price.focus();
-                    return false;
-                }
-                if( type === ""){
-                    alert("<spring:message code="book.alert.type"/>");
-                    document.addForm.type.focus();
-                    return false;
-                }
-                if( isbn === ""){
-                    alert("<spring:message code="book.alert.isbn"/>");
-                    document.addForm.isbn.focus();
-                    return false;
-                }
-                if( publisher === ""){
-                    alert("<spring:message code="book.alert.publisher"/>");
-                    document.addForm.name.focus();
-                    return false;
-                }
-                if( intro === ""){
-                    alert("<spring:message code="book.alert.intro"/>");
-                    document.addForm.isbn.focus();
-                    return false;
-                }
-                document.addForm.submit();
-                return true;
-            }
-    </script>
 </head>
 <body>
 
@@ -90,7 +38,7 @@
 
                 <div class="form-group">
                     <label><spring:message code="book.price"/></label>
-                    <form:input path="price" type="number" class="form-control" name="price"/>
+                    <form:input path="price" type="text" class="form-control" name="price"/>
                     <span style="color: #ff0000;font-weight: bold;margin: 100px auto;text-align: center">${priceMsg }</span>
                 </div>
 
@@ -129,7 +77,6 @@
                         <spring:message code="setting.back"/>
                     </a>
                 </div>
-                <span style="color: #005eff;font-weight: bold;margin: 100px auto;text-align: center">${success }</span>
             </form:form>
         </div>
     </div>

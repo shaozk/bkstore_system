@@ -5,11 +5,9 @@
 
 package service;
 
-import response.ResponseResult;
-
 /**
  * @author shaozk
  */
 public interface TestService {
-    public ResponseResult test();
+    public String test();
 }
