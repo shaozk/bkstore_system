@@ -227,4 +227,4 @@
 
 ## 演示
 
-![](E:\Code\IDEAProjects\bkstore\bkstore_system\images\书籍管理系统-主页.png)
+![](..\images\书籍管理系统-主页.png)
