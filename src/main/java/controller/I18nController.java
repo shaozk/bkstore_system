@@ -7,6 +7,7 @@ import java.util.Locale;
 
 /**
  * @author shaozk
+ * 国际化
  */
 @Controller
 public class I18nController {

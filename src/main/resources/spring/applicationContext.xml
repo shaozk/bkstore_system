@@ -14,14 +14,9 @@
     <context:component-scan base-package="service"/>
     <context:component-scan base-package="dao"/>
 
-
-
     <!-- 加载配置文件 -->
     <context:property-placeholder location="classpath:db.properties" />
 
-<!--   注入加密bean-->
-    <bean name="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
-    <bean id="idMaker" class="utils.IdMaker"/>
 
     <!-- 数据库连接池 -->
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"

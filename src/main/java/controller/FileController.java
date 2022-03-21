@@ -11,6 +11,7 @@ import java.io.*;
 
 /**
  * @author shaozk
+ * 文件上传测试类
  */
 @Controller
 public class FileController {

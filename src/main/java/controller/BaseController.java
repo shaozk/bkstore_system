@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 /**
  * @author shaozk
+ * 统一异常处理
  */
 public class BaseController {
     /**

@@ -147,6 +147,4 @@ public class BookPortalController extends BaseController {
         }
     }
 
-
-
 }

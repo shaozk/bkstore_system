@@ -64,15 +64,5 @@
         <property name="validationMessageSource" ref="messageSource" />
     </bean>
 
-    <!-- 注册类型转换器BookConverter-->
-    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-        <property name="converters">
-            <set>
-                <bean class="convert.BookConvert"/>
-            </set>
-        </property>
-    </bean>
-
-    <mvc:annotation-driven conversion-service="conversionService"/>
 
 </beans>
